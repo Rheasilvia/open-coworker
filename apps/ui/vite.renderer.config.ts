@@ -16,4 +16,8 @@ export default defineConfig({
       '@': './src/renderer',
     },
   },
+  // Ensure TypeScript types are properly loaded
+  esbuild: {
+    jsx: 'automatic',
+  },
 });

@@ -10,7 +10,7 @@
       "isBackground": true,
       "problemMatcher": {
         "pattern": {
-          "regexp": "^(.*):(\d+):(\d+)\s+-\s+(.*)$",
+          "regexp": "^(.*):(\\d+):(\\d+)\\s+-\\s+(.*)$",
           "file": 1,
           "line": 2,
           "column": 3,
@@ -18,8 +18,8 @@
         },
         "background": {
           "activeOnStart": true,
-          "beginsPattern": "^.*Uvicorn running on.*",
-          "endsPattern": "^.*Application startup complete\."
+          "beginsPattern": ".*(Uvicorn running|Application startup complete).*",
+          "endsPattern": ""
         }
       },
       "presentation": {

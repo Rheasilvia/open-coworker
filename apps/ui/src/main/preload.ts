@@ -5,6 +5,10 @@ import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('electronAPI', {
   sendMessage: (message: string) => ipcRenderer.invoke('send-message', message),
   onMessage: (callback: (message: string) => void) => {
-    ipcRenderer.on('message', (_event, message) => callback(message));
+    const listener = (_event: Electron.IpcRendererEvent, message: string) => callback(message);
+    ipcRenderer.on('message', listener);
+    // Return a cleanup function
+    return () => ipcRenderer.removeListener('message', listener);
   },
 });
+
