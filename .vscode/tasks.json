@@ -4,7 +4,7 @@
     {
       "label": "Start Agent Service",
       "type": "shell",
-      "command": "pnpm",
+      "command": "yarn",
       "args": ["dev:agent"],
       "group": "build",
       "isBackground": true,
@@ -30,7 +30,7 @@
     {
       "label": "Start Electron UI",
       "type": "shell",
-      "command": "pnpm",
+      "command": "yarn",
       "args": ["dev"],
       "group": "build",
       "isBackground": true,
@@ -56,15 +56,15 @@
     {
       "label": "Install Dependencies",
       "type": "shell",
-      "command": "pnpm install",
+      "command": "yarn install",
       "group": "none",
       "problemMatcher": []
     },
     {
       "label": "Run Agent Tests",
       "type": "shell",
-      "command": "pnpm",
-      "args": ["--filter", "agent", "test"],
+      "command": "yarn",
+      "args": ["workspace", "agent", "test"],
       "group": "test",
       "problemMatcher": [],
       "presentation": {
@@ -75,8 +75,8 @@
     {
       "label": "Lint Agent",
       "type": "shell",
-      "command": "pnpm",
-      "args": ["--filter", "agent", "lint"],
+      "command": "yarn",
+      "args": ["workspace", "agent", "lint"],
       "group": "test",
       "problemMatcher": [],
       "presentation": {

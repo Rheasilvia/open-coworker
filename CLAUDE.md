@@ -10,14 +10,14 @@ Open-Coworker is a cross-platform desktop agentic application with a dual-agent 
   - Main Agent: LangGraph (orchestrator)
   - Sub Agent: Claude Agent SDK (controls claude-code)
 
-The project uses a pnpm workspace monorepo structure with two main apps in `apps/`.
+The project uses a yarn workspace monorepo structure with two main apps in `apps/`.
 
 ## Development Commands
 
 ### Initial Setup
 ```bash
 # Install Node.js dependencies
-pnpm install
+yarn install
 
 # Setup Python agent
 cd apps/agent && uv sync
@@ -26,24 +26,24 @@ cd apps/agent && uv sync
 ### Development (Two Terminals Required)
 ```bash
 # Terminal 1: Start agent service
-pnpm dev:agent
+yarn dev:agent
 # Runs FastAPI on http://127.0.0.1:8000 with auto-reload
 
 # Terminal 2: Start Electron UI
-pnpm dev
+yarn dev
 # Starts Electron with Vite dev server on port 5173
 ```
 
 ### Other Commands
 ```bash
 # Build UI for production
-pnpm build
+yarn build
 
 # Run agent tests
-pnpm --filter agent test
+yarn workspace agent test
 
 # Lint code
-pnpm lint
+yarn lint
 ```
 
 ## Architecture
@@ -83,7 +83,7 @@ These are separate services that run independently.
 - Auto-reload enabled
 
 ### Package Mirrors
-- **pnpm**: Uses `https://registry.npmmirror.com/`
+- **yarn**: Uses `https://registry.npmmirror.com/` (configured in .npmrc)
 - **uv**: Uses Tsinghua TUNA mirror
 
 ## Important Notes

@@ -23,7 +23,7 @@
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}/apps/ui",
-      "runtimeExecutable": "pnpm",
+      "runtimeExecutable": "yarn",
       "runtimeArgs": ["dev"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
@@ -36,13 +36,18 @@
       "port": 9229,
       "webRoot": "${workspaceFolder}/apps/ui",
       "timeout": 30000
-    }
-  ],
-  "compounds": [
+    },
     {
       "name": "Debug All (Agent + UI)",
-      "configurations": ["Debug Agent Service", "Debug Electron UI"],
-      "stopAll": true
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/ui",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["dev"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"],
+      "preLaunchTask": "Start Agent Service"
     }
   ]
 }

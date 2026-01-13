@@ -24,7 +24,7 @@ open-coworker/
 ### Prerequisites
 
 - Node.js 20+
-- pnpm 9+
+- Yarn 1.22+
 - Python 3.13+
 - uv (Python package manager)
 
@@ -32,7 +32,7 @@ open-coworker/
 
 ```bash
 # Install Node.js dependencies
-pnpm install
+yarn install
 
 # Setup Python agent
 cd apps/agent
@@ -43,10 +43,10 @@ uv sync
 
 ```bash
 # Start agent service (terminal 1)
-pnpm dev:agent
+yarn dev:agent
 
 # Start UI (terminal 2)
-pnpm dev
+yarn dev
 ```
 
 ## Resources
