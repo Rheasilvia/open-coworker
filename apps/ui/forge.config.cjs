@@ -32,10 +32,12 @@ module.exports = {
           {
             entry: 'src/main/index.ts',
             config: 'vite.main.config.ts',
+            target: 'main',
           },
           {
             entry: 'src/main/preload.ts',
             config: 'vite.main.config.ts',
+            target: 'preload',
           },
         ],
         renderer: [

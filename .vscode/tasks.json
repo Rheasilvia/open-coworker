@@ -4,12 +4,13 @@
     {
       "label": "Start Agent Service",
       "type": "shell",
-      "command": "cd apps/agent && uv run uvicorn src.main:app --reload --host 127.0.0.1 --port 8000",
+      "command": "pnpm",
+      "args": ["dev:agent"],
       "group": "build",
       "isBackground": true,
       "problemMatcher": {
         "pattern": {
-          "regexp": "^(.*):(\\d+):(\\d+)\\s+-\\s+(.*)$",
+          "regexp": "^(.*):(\d+):(\d+)\s+-\s+(.*)$",
           "file": 1,
           "line": 2,
           "column": 3,
@@ -18,7 +19,7 @@
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Uvicorn running on.*",
-          "endsPattern": "^.*Application startup complete\\."
+          "endsPattern": "^.*Application startup complete\."
         }
       },
       "presentation": {
@@ -29,7 +30,8 @@
     {
       "label": "Start Electron UI",
       "type": "shell",
-      "command": "cd apps/ui && npx electron-forge start",
+      "command": "pnpm",
+      "args": ["dev"],
       "group": "build",
       "isBackground": true,
       "problemMatcher": [],
@@ -55,20 +57,14 @@
       "label": "Install Dependencies",
       "type": "shell",
       "command": "pnpm install",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "Install Agent Dependencies",
-      "type": "shell",
-      "command": "cd apps/agent && uv sync",
-      "group": "build",
+      "group": "none",
       "problemMatcher": []
     },
     {
       "label": "Run Agent Tests",
       "type": "shell",
-      "command": "cd apps/agent && uv run pytest",
+      "command": "pnpm",
+      "args": ["--filter", "agent", "test"],
       "group": "test",
       "problemMatcher": [],
       "presentation": {
@@ -79,7 +75,8 @@
     {
       "label": "Lint Agent",
       "type": "shell",
-      "command": "cd apps/agent && uv run ruff check",
+      "command": "pnpm",
+      "args": ["--filter", "agent", "lint"],
       "group": "test",
       "problemMatcher": [],
       "presentation": {

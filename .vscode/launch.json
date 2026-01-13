@@ -23,13 +23,11 @@
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}/apps/ui",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": [
-        "electron-forge",
-        "start"
-      ],
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"],
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"]
     },
     {
       "name": "Debug Electron Renderer",
@@ -38,27 +36,13 @@
       "port": 9229,
       "webRoot": "${workspaceFolder}/apps/ui",
       "timeout": 30000
-    },
-    {
-      "name": "Debug: All (Agent + UI)",
-      "type": "node",
-      "request": "launch",
-      "cwd": "${workspaceFolder}",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": [
-        "electron-forge",
-        "start"
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "preLaunchTask": "Start Agent Service"
     }
   ],
   "compounds": [
     {
-      "name": "Launch All (Agent + UI)",
-      "configurations": ["Debug Agent Service"],
-      "preLaunchTask": "Start All (Agent + UI)"
+      "name": "Debug All (Agent + UI)",
+      "configurations": ["Debug Agent Service", "Debug Electron UI"],
+      "stopAll": true
     }
   ]
 }
