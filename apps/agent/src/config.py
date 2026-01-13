@@ -7,7 +7,7 @@ class Settings(BaseSettings):
 
     # API Settings
     api_host: str = "127.0.0.1"
-    api_port: int = 8000
+    api_port: int = 8000  # Agent service port (separate from UI)
     api_reload: bool = True
 
     # Agent Settings

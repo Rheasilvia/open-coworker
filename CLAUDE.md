@@ -31,7 +31,7 @@ pnpm dev:agent
 
 # Terminal 2: Start Electron UI
 pnpm dev
-# Starts Electron with Vite dev server
+# Starts Electron with Vite dev server on port 5173
 ```
 
 ### Other Commands
@@ -69,19 +69,13 @@ Key files:
 
 Both are currently placeholder implementations returning "Hello World" responses.
 
-## Build Systems
-
-### Electron (UI)
-- **Tool**: Electron Forge with Vite plugin
-- **Config**: `apps/ui/forge.config.cjs`
-- **Vite configs**: `vite.main.config.ts`, `vite.renderer.config.ts`
-
-### Python (Agent)
-- **Tool**: uv with pyproject.toml
-- **Backend**: Hatchling
-- **Packages**: Source in `src/` directory
-
 ## Configuration
+
+### Ports
+- **Agent Service**: `http://127.0.0.1:8000` (FastAPI)
+- **UI Dev Server**: `http://localhost:5173` (Vite)
+
+These are separate services that run independently.
 
 ### Agent Service
 - Host: `127.0.0.1:8000`
