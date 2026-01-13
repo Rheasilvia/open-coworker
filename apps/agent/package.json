@@ -1,0 +1,10 @@
+{
+  "name": "agent",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "cd ../.. && uv run --directory apps/agent uvicorn src.main:app --reload --host 127.0.0.1 --port 8000",
+    "test": "cd ../.. && uv run --directory apps/agent pytest",
+    "lint": "cd ../.. && uv run --directory apps/agent ruff check"
+  }
+}

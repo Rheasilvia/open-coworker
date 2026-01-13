@@ -1,0 +1,21 @@
+{
+  "name": "open-coworker",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Cross-platform desktop agentic application",
+  "scripts": {
+    "dev": "pnpm --filter ui dev",
+    "dev:agent": "pnpm --filter agent dev",
+    "build": "pnpm --filter ui build",
+    "start": "pnpm --filter ui start",
+    "lint": "pnpm --filter ui lint && pnpm --filter agent lint",
+    "clean": "pnpm --recursive exec -- rm -rf node_modules dist .vite"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
