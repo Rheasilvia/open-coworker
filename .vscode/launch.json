@@ -1,0 +1,64 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Agent Service",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "src.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000",
+        "--reload"
+      ],
+      "cwd": "${workspaceFolder}/apps/agent",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Debug Electron UI",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/ui",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "electron-forge",
+        "start"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Debug Electron Renderer",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9229,
+      "webRoot": "${workspaceFolder}/apps/ui",
+      "timeout": 30000
+    },
+    {
+      "name": "Debug: All (Agent + UI)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "electron-forge",
+        "start"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "preLaunchTask": "Start Agent Service"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch All (Agent + UI)",
+      "configurations": ["Debug Agent Service"],
+      "preLaunchTask": "Start All (Agent + UI)"
+    }
+  ]
+}

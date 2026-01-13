@@ -1,0 +1,91 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Agent Service",
+      "type": "shell",
+      "command": "cd apps/agent && uv run uvicorn src.main:app --reload --host 127.0.0.1 --port 8000",
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+)\\s+-\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "message": 4
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Uvicorn running on.*",
+          "endsPattern": "^.*Application startup complete\\."
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Start Electron UI",
+      "type": "shell",
+      "command": "cd apps/ui && npx electron-forge start",
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Start All (Agent + UI)",
+      "dependsOrder": "parallel",
+      "dependsOn": [
+        "Start Agent Service",
+        "Start Electron UI"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Install Dependencies",
+      "type": "shell",
+      "command": "pnpm install",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Install Agent Dependencies",
+      "type": "shell",
+      "command": "cd apps/agent && uv sync",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Agent Tests",
+      "type": "shell",
+      "command": "cd apps/agent && uv run pytest",
+      "group": "test",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Lint Agent",
+      "type": "shell",
+      "command": "cd apps/agent && uv run ruff check",
+      "group": "test",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}
